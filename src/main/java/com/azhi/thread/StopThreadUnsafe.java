@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.ToString;
 
 /**
+ *
+ * 终止线程操作
  * @author azhi
  * 2021/3/23 9:26 下午
  */
