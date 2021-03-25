@@ -1,4 +1,4 @@
-package com.azhi.thread;
+package com.azhi.thread.base;
 
 import lombok.Data;
 import lombok.ToString;

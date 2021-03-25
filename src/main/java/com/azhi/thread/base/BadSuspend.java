@@ -1,6 +1,8 @@
-package com.azhi.thread;
+package com.azhi.thread.base;
 
 /**
+ *
+ * 线程挂起
  * created by @Author: azhi on @Date: 2021/1/24 12:59 下午
  */
 public class BadSuspend {
@@ -25,6 +27,7 @@ public class BadSuspend {
         t1.start();
         Thread.sleep(100);
         t2.start();
+        //继续执行
         t1.resume();
         t2.resume();
         t1.join();

@@ -1,4 +1,4 @@
-package com.azhi.thread;
+package com.azhi.thread.safelist;
 
 import java.util.ArrayList;
 import java.util.Vector;

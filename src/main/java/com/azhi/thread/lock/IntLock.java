@@ -1,4 +1,4 @@
-package com.azhi.thread;
+package com.azhi.thread.lock;
 
 import java.util.concurrent.locks.ReentrantLock;
 

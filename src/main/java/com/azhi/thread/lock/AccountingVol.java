@@ -1,6 +1,7 @@
-package com.azhi.thread;
+package com.azhi.thread.lock;
 
 /**
+ * 正确对加锁例子
  * @author azhi
  * 2021/3/24 8:41 下午
  */

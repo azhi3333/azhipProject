@@ -1,4 +1,4 @@
-package com.azhi.thread;
+package com.azhi.thread.base;
 
 /**
  *

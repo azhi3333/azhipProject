@@ -1,6 +1,5 @@
-package com.azhi.thread;
+package com.azhi.thread.safelist;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
