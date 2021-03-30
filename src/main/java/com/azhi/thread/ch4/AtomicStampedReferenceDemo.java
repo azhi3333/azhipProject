@@ -2,11 +2,17 @@ package com.azhi.thread.ch4;
 
 import java.util.concurrent.atomic.AtomicStampedReference;
 
+/**
+ *
+ * // TODO: 2021/3/29
+ * 适用场景：有一家蛋糕店，为了挽留客户，决定为VIP卡里余额小于20元的客户一次性赠送20元。
+ * @author azhi
+ * 2021/3/29 10:52 上午
+ */
 public class AtomicStampedReferenceDemo {
 	static AtomicStampedReference<Integer> money = new AtomicStampedReference<Integer>(19, 0);
 
 	public static void main(String[] args) {
-		// ģ�����߳�ͬʱ���º�̨���ݿ⣬Ϊ�û���ֵ
 		for (int i = 0; i < 3; i++) {
 			final int timestamp = money.getStamp();
 			new Thread() {
@@ -16,12 +22,11 @@ public class AtomicStampedReferenceDemo {
 							Integer m = money.getReference();
 							if (m < 20) {
 								if (money.compareAndSet(m, m + 20, timestamp, timestamp + 1)) {
-									System.out.println("���С��20Ԫ����ֵ�ɹ������:" 
-											+ money.getReference()+ "Ԫ");
+									System.out.println("余额小于20元，充值成功，余额："
+											+ money.getReference()+ "元");
 									break;
 								}
 							} else {
-								// System.out.println("������20Ԫ�������ֵ");
 								break;
 							}
 						}
@@ -30,7 +35,7 @@ public class AtomicStampedReferenceDemo {
 			}.start();
 		}
 
-		// �û������̣߳�ģ��������Ϊ
+
 		new Thread() {
 			public void run() {
 				for (int i = 0; i < 100; i++) {
@@ -38,13 +43,13 @@ public class AtomicStampedReferenceDemo {
 						int timestamp = money.getStamp();
 						Integer m = money.getReference();
 						if (m > 10) {
-							System.out.println("����10Ԫ");
+							System.out.println("大于10元");
 							if (money.compareAndSet(m, m - 10, timestamp, timestamp + 1)) {
-								System.out.println("�ɹ�����10Ԫ�����:" + money.getReference());
+								System.out.println("成功消费10元，余额：" + money.getReference());
 								break;
 							}
 						} else {
-							System.out.println("û���㹻�Ľ��");
+							System.out.println("没有足够的金额");
 							break;
 						}
 					}
