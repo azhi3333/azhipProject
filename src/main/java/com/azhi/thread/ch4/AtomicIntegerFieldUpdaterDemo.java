@@ -8,10 +8,13 @@ public class AtomicIntegerFieldUpdaterDemo {
         int id;
         volatile int score;
     }
+
+    //两个作为比较
     public final static AtomicIntegerFieldUpdater<Candidate> scoreUpdater 
         = AtomicIntegerFieldUpdater.newUpdater(Candidate.class, "score");
-    //���Updater�Ƿ�����ȷ
+
     public static AtomicInteger allScore=new AtomicInteger(0);
+
     public static void main(String[] args) throws InterruptedException {
         final Candidate stu=new Candidate();
         Thread[] t=new Thread[10000];
@@ -19,6 +22,7 @@ public class AtomicIntegerFieldUpdaterDemo {
             t[i]=new Thread() {  
                 public void run() {  
                     if(Math.random()>0.4){
+                        //同时写入为了验证是否相等
                         scoreUpdater.incrementAndGet(stu);
                         allScore.incrementAndGet();
                     }
