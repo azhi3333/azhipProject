@@ -10,7 +10,6 @@ import java.util.concurrent.LinkedBlockingDeque;
 public class Plus implements Runnable{
     public static BlockingQueue<Msg> queue = new LinkedBlockingDeque<>();
 
-
     @Override
     public void run() {
         while (true) {

@@ -1,11 +1,18 @@
 package com.azhi.thread.add;
 
+import lombok.extern.slf4j.Slf4j;
+
+
 /**
+ * 流水线思想
  * @author azhi
  * 2021/3/30 5:14 下午
  */
-public class PStreamMain {
+@Slf4j
+public class StreamMain {
+
     public static void main(String[] args) {
+        long l = System.currentTimeMillis();
         new Thread(new Plus()).start();
         new Thread(new Multiply()).start();
         new Thread(new Div()).start();
@@ -19,5 +26,7 @@ public class PStreamMain {
                 Plus.queue.add(msg);
             }
         }
+        //todo ????
+        System.out.println("use time " + (System.currentTimeMillis() - l));
     }
 }

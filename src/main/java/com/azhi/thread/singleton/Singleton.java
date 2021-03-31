@@ -1,4 +1,4 @@
-package com.azhi.thread.Singleton;
+package com.azhi.thread.singleton;
 
 /**
  * @author azhi
