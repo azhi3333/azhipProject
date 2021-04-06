@@ -64,6 +64,7 @@ public class MultiThreadEchoServer {
         }
         while (true) {
             try {
+                //通过accept（）方法监听客户端请求
                 clientSocket = echoServer.accept();
                 System.out.println(clientSocket.getRemoteSocketAddress() + " connect!");
                 tp.execute(new HandleMsg(clientSocket));
