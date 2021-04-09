@@ -1,6 +1,7 @@
 package com.azhi.thread.lock;
 
 /**
+ * 死锁的例子
  * @author azhi
  * 2021/3/30 3:35 下午
  */
@@ -36,13 +37,24 @@ public class DeadLock extends Thread{
         }
 
         if (tool == fork2) {
-            synchronized (fork2) {
+//            synchronized (fork2) {
+//                try {
+//                    Thread.sleep(500);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                synchronized (fork1) {
+//                    System.out.println("哲学家B开始吃饭了");
+//                }
+//            }
+            //避免死锁，破坏循环等待条件
+            synchronized (fork1) {
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                synchronized (fork1) {
+                synchronized (fork2) {
                     System.out.println("哲学家B开始吃饭了");
                 }
             }
